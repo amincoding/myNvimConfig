@@ -69,7 +69,8 @@ Plug 'gruvbox-community/gruvbox'
 " Coc of completion
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 " prettier
 Plug 'sbdchd/neoformat'
 call plug#end()
@@ -80,6 +81,8 @@ endif
 
 let loaded_matchparen = 1
 let mapleader = " "
+inoremap  ii <Esc>
+
 
 if has("nvim-0.5.0") || has("patch-8.1.1564")
   " Recently vim can merge signcolumn and number column into one
@@ -108,6 +111,10 @@ if has('nvim')
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
+
+nnoremap <C-p> :Files ~<CR>
+nnoremap <C-f> :Rg!<space>
+
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
